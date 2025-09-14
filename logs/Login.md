@@ -4,7 +4,8 @@
 
 This directory contains logs and documentation of development activities, API integrations, and system operations for the EHR Integration Dashboard project.
 
-## 📝 Development Log
+#6. **Automatic Token Management**: Seamless session handling with refresh tokens
+7. **Type-Safe HTTP Client**: Centralized API communication with error handling 📝 Development Log
 
 ### ✅ Completed Implementations
 
@@ -83,6 +84,8 @@ app/
 │   └── layout.tsx        # Login page layout
 ├── layout.tsx            # Root application layout
 └── globals.css           # Global styles
+lib/
+└── axiosInstance.ts      # HTTP client with token management
 ```
 
 #### 3. Environment Configuration
@@ -111,13 +114,60 @@ app/
 - [x] Responsive Design
 - [x] TypeScript Implementation
 - [x] Environment Configuration
+- [x] Axios Instance with Token Management
+- [x] Automatic Token Refresh
+
+#### 4. API Client Setup with Axios (September 14, 2025)
+
+**File Created:**
+- `lib/axiosInstance.ts` - Centralized HTTP client with automatic token management
+
+**Technical Implementation:**
+
+**Axios Instance Configuration:**
+- **Base URL**: `{NEXT_BASE_URL}/{NEXT_FIRM_URL_PREFIX}`
+- **Timeout**: 30 seconds for healthcare API reliability
+- **Default Headers**:
+  - `Content-Type: application/x-www-form-urlencoded`
+  - `x-api-key: {NEXT_API_KEY}`
+
+**Automatic Token Management:**
+- **Request Interceptor**: Automatically adds Bearer token from cookies to all requests
+- **Response Interceptor**: Handles 401 errors and automatic token refresh
+- **Refresh Token Flow**: Seamless token renewal without user intervention
+- **Queue Management**: Queues failed requests during token refresh to prevent race conditions
+
+**Token Refresh Implementation:**
+- **Endpoint**: `{NEXT_BASE_URL}/{NEXT_FIRM_URL_PREFIX}/ema/ws/oauth2/grant`
+- **Grant Type**: `refresh_token`
+- **Token Source**: Retrieves refresh token from HTTP-only cookies
+- **Cookie Updates**: Automatically updates both access and refresh tokens
+- **Fallback**: Redirects to login page if refresh fails
+
+**Security Features:**
+- ✅ Automatic token attachment to requests
+- ✅ Secure cookie management
+- ✅ Request queuing during token refresh
+- ✅ Automatic logout on refresh failure
+- ✅ Environment variable validation
+- ✅ Type-safe implementation with TypeScript
+
+**Utility Functions:**
+- `getAccessToken()`: Retrieve current access token
+- `getRefreshToken()`: Retrieve current refresh token
+- `isAuthenticated()`: Check authentication status
+- `logout()`: Clear tokens and redirect to login
+
+**Error Handling:**
+- Network timeout handling
+- Token refresh failure management
+- Automatic retry for failed requests
+- Queue processing for concurrent requests
 
 ### 🔄 Next Steps
 - [ ] Dashboard UI Architecture
 - [ ] Patient Management Module
 - [ ] Clinical Operations Integration
-- [ ] API Client Setup with Axios
-- [ ] Token Refresh Mechanism
 - [ ] Error Boundary Implementation
 - [ ] Unit Testing Setup
 

@@ -16,19 +16,19 @@ This project builds a secure, HIPAA-compliant Next.js application that integrate
 - **Login UI/UX**: Modern, HIPAA-compliant login interface with enhanced design
 - **Security Implementation**: HTTP-only cookies, input validation, error handling
 - **Environment Configuration**: Secure credential management with Zod validation
+- **API Client Setup**: Centralized Axios instance with automatic token management
+- **Token Refresh Mechanism**: Seamless token renewal and session handling
 
 ### 🔄 In Progress
 
-- **API Client Setup**: Building secure HTTP client with authentication and error handling
-- **Token Management**: Implementing refresh token logic and session handling
 - **Dashboard Architecture**: Planning main dashboard layout and navigation
+- **Patient Management Module**: Designing CRUD operations for patient data
 
 ### 📅 Next Steps
 
 - Dashboard UI Architecture
 - Patient Management Module
 - Clinical Operations Integration
-- Token Refresh Mechanism
 - Error Boundary Implementation
 - Unit Testing Setup
 - Production Deployment Preparation
@@ -73,6 +73,7 @@ ehs/
 │   ├── globals.css        # Global styles
 │   └── favicon.ico        # Application favicon
 ├── lib/                   # Core utilities and configurations
+│   ├── axiosInstance.ts   # HTTP client with automatic token management
 │   ├── api/              # API client and service layers (planned)
 │   ├── auth/             # Authentication utilities (planned)
 │   ├── config/           # Environment and app configuration (planned)
@@ -205,6 +206,7 @@ Build → Test → Security Scan → Deploy Staging → Manual Review → Deploy
 - [x] API Client Setup & Authentication (OAuth2 implementation)
 - [x] Environment Configuration (Zod validation, secure credentials)
 - [x] Basic Dashboard Layout (Enhanced login UI with modern design)
+- [x] Axios Instance Setup (Automatic token management and refresh)
 
 ### Phase 2: Core Features (8-10 hours)
 
@@ -338,6 +340,7 @@ All development activities, implementation details, and progress tracking are do
 - **UI/UX**: Modern glass-morphism design with Tailwind CSS 4
 - **Error Handling**: Comprehensive logging with user-friendly messages
 - **Type Safety**: Full TypeScript implementation with runtime validation
+- **Token Management**: Automatic refresh with seamless session handling
 
 #### Technical Architecture
 - **Framework**: Next.js 15 with App Router
@@ -345,6 +348,7 @@ All development activities, implementation details, and progress tracking are do
 - **Styling**: Tailwind CSS 4 with custom design system
 - **Validation**: Zod schemas for runtime type checking
 - **Notifications**: React-Toastify for user feedback
+- **HTTP Client**: Axios with interceptors for automatic token management
 
 ---
 
