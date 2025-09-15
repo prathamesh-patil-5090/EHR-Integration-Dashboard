@@ -13,9 +13,9 @@ const envSchema = {
 };
 
 // Validate environment variables
-if (!envSchema.NEXT_BASE_URL || !envSchema.NEXT_FIRM_URL_PREFIX || !envSchema.NEXT_API_KEY) {
-  throw new Error('Missing required environment variables for API configuration');
-}
+// if (!envSchema.NEXT_BASE_URL || !envSchema.NEXT_FIRM_URL_PREFIX || !envSchema.NEXT_API_KEY) {
+//   throw new Error('Missing required environment variables for API configuration');
+// }
 
 // Create axios instance with base configuration
 const apiClient: AxiosInstance = axios.create({

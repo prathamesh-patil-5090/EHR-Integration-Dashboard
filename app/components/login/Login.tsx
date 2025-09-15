@@ -5,9 +5,11 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Button from '../ui/Button';
 import { Form, Input, FormContainer } from '../ui/Form';
+import { useRouter } from 'next/navigation';
 
 export default function Login() {
   const [loading, setLoading] = useState<boolean>(false);
+  const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -25,6 +27,7 @@ export default function Login() {
 
       if (response.ok) {
         toast.success('Login successful! Redirecting to dashboard...');
+        router.push('/patients');
       } else {
         console.error('Login failed:', data);
         toast.error('An error occurred during login. Please try again.');
